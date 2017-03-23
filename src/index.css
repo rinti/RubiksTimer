@@ -16,11 +16,18 @@ body {
   border-right: 1px solid #C6A49A;
 }
 
-.App .Rubiks-timer, .App .App-header {
+.Rubiks-timer, .App-header {
   text-align: center;
 }
 
-.App .Rubiks-timer-time {
+.Rubiks-timer-text {
+  padding: 15px;
+  margin: 15px;
+  background-color: #E94E77;
+  color: #fff;
+}
+
+.Rubiks-timer-time {
   display: inline-block;
   padding: 15px;
   margin: 15px;
@@ -28,6 +35,6 @@ body {
   color: #fff;
 }
 
-.App .App-header h2 {
+.App-header h2 {
   margin-top: 10px;
 }

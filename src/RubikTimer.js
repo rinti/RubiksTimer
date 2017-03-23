@@ -36,6 +36,16 @@ class RubikTimer extends Component {
     })
   }
 
+  _formatSeconds(secs) {
+    const minutes = Math.floor(secs / 60)
+    const seconds = (secs - minutes * 60).toFixed(1)
+    let ret = `${seconds}s`
+    if (minutes) {
+      ret = `${minutes}m ${seconds}s`
+    }
+    return ret
+  }
+
   playPause() {
     if(!this.state.isStarted) {
       this.setState((prevState) => {
@@ -59,10 +69,10 @@ class RubikTimer extends Component {
   render() {
     return (
         <div className="Rubiks-timer">
-          <div className="Rubiks-timer-text">{this.state.timePassed}</div>
+          <div className="Rubiks-timer-text">{this._formatSeconds(this.state.timePassed)}</div>
           <button onClick={this.playPause}>Press space to start/stop</button>
           <div className="Rubiks-timer-times">
-            {this.state.times.map((time, i) => <span className="Rubiks-timer-time" key={i.toString()}>{time}</span>)}
+            {this.state.times.map((time, i) => <span className="Rubiks-timer-time" key={i.toString()}>{this._formatSeconds(time)}</span>)}
           </div>
         </div>
     );
