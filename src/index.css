@@ -1,4 +1,33 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Rubik', sans-serif;
+  color: #C6A49A;
+  background-color: #C6E5D9;
+}
+
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #F4EAD5;
+  padding: 15px;
+  min-height: 100vh;
+  border-left: 1px solid #C6A49A;
+  border-right: 1px solid #C6A49A;
+}
+
+.App .Rubiks-timer, .App .App-header {
+  text-align: center;
+}
+
+.App .Rubiks-timer-time {
+  display: inline-block;
+  padding: 15px;
+  margin: 15px;
+  background-color: #E94E77;
+  color: #fff;
+}
+
+.App .App-header h2 {
+  margin-top: 10px;
 }
