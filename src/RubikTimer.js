@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import RubikCharts from './RubikCharts'
 
 let interval = null
 const TIMES_KEY = 'rubiks_times'
@@ -59,7 +60,7 @@ class RubikTimer extends Component {
       clearInterval(interval);
       this.setState((prevState) => {
         let times = prevState.times
-        times.unshift(prevState.timePassed)
+        times.unshift({passedTime: parseFloat(prevState.timePassed)})
         localStorage.setItem(TIMES_KEY, JSON.stringify(times))
         return {isStarted: false, timePassed: 0, timeStarted: null}
       } )
@@ -71,12 +72,15 @@ class RubikTimer extends Component {
         <div className="Rubiks-timer">
           <div className="Rubiks-timer-text">{this._formatSeconds(this.state.timePassed)}</div>
           <button onClick={this.playPause}>Press space to start/stop</button>
+          <div className="Rubiks-timer-chart">
+            <RubikCharts data={this.state.times} />
+          </div>
           <div className="Rubiks-timer-times">
             {this.state.times.map((time, i) => {
-                var first = (i === 0) ? 'first' : ''
+                var first = (i === 0) ? "first" : ""
                 return (
-                  <span className={'Rubiks-timer-time ' + first} key={i.toString()}>
-                    {this._formatSeconds(time)}
+                  <span className={"Rubiks-timer-time " + first} key={i.toString()}>
+                    {this._formatSeconds(time.passedTime)}
                   </span>
                 )
               })

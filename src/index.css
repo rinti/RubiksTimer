@@ -27,6 +27,10 @@ body {
   color: #fff;
 }
 
+.Rubiks-timer-chart {
+  margin: 15px;
+  height: 100px;
+}
 .Rubiks-timer-times {
   display: flex;
   flex-direction: row;
