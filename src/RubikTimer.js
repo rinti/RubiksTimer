@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-let interval = null;
+let interval = null
+const TIMES_KEY = 'rubiks_times'
 
 class RubikTimer extends Component {
   constructor(props) {
@@ -14,6 +15,17 @@ class RubikTimer extends Component {
     }
 
     this.playPause = this.playPause.bind(this)
+  }
+
+  componentDidMount() {
+    let times = localStorage.getItem(TIMES_KEY)
+    if(times) {
+      this.setState((prevState) => {
+        return {
+          times: JSON.parse(times)
+        }
+      })
+    }
   }
 
   _updateTimer() {
@@ -36,8 +48,9 @@ class RubikTimer extends Component {
     } else {
       clearInterval(interval);
       this.setState((prevState) => {
-        let times = prevState.times;
+        let times = prevState.times
         times.push(prevState.timePassed)
+        localStorage.setItem(TIMES_KEY, JSON.stringify(times))
         return {isStarted: false, timePassed: 0, timeStarted: null}
       } )
     }
