@@ -27,12 +27,23 @@ body {
   color: #fff;
 }
 
+.Rubiks-timer-times {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .Rubiks-timer-time {
   display: inline-block;
   padding: 15px;
   margin: 15px;
   background-color: #E94E77;
   color: #fff;
+}
+
+.Rubiks-timer-time.first {
+  border: 1px solid #ad3957;
 }
 
 .App-header h2 {
