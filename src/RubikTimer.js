@@ -71,7 +71,7 @@ class RubikTimer extends Component {
     return (
         <div className="Rubiks-timer">
           <div className="Rubiks-timer-text">{this._formatSeconds(this.state.timePassed)}</div>
-          <button onClick={this.playPause}>Press space to start/stop</button>
+          <button className="Rubiks-timer-button" onClick={this.playPause}>Press space to start/stop</button>
           <div className="Rubiks-timer-chart">
             <RubikCharts data={this.state.times} />
           </div>
