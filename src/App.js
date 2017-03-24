@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h2>RubiksTimer</h2>
+          <h2 className="App-name">RubiksTimer</h2>
         </header>
         <RubikTimer />
       </div>

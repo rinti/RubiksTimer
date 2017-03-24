@@ -61,6 +61,6 @@ body {
   border: 1px solid #ad3957;
 }
 
-.App-header h2 {
+.App-header .App-name {
   margin-top: 10px;
 }
