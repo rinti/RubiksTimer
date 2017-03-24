@@ -32,7 +32,7 @@ class RubikTimer extends Component {
   _updateTimer() {
     this.setState((prevState) => {
       return {
-        timePassed: ((new Date().getTime() - prevState.timeStarted.getTime()) / 1000).toFixed(1)
+        timePassed: ((performance.now() - prevState.timeStarted) / 1000).toFixed(1)
       }
     })
   }
@@ -52,7 +52,7 @@ class RubikTimer extends Component {
       this.setState((prevState) => {
         return {
           isStarted: true,
-          timeStarted: new Date()
+          timeStarted: performance.now()
         }
       })
       interval = setInterval(this._updateTimer.bind(this), 100)
