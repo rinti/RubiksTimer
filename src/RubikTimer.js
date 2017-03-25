@@ -15,9 +15,11 @@ class RubikTimer extends Component {
     }
 
     this.playPause = this.playPause.bind(this)
+    this._keyDownPlayPause = this._keyDownPlayPause.bind(this)
   }
 
   componentDidMount() {
+    document.addEventListener("keydown", this._keyDownPlayPause, false)
     let times = localStorage.getItem(TIMES_KEY)
     if(times) {
       this.setState((prevState) => {
@@ -25,6 +27,16 @@ class RubikTimer extends Component {
           times: JSON.parse(times)
         }
       })
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this._keyDownPlayPause, false)
+  }
+
+  _keyDownPlayPause(event) {
+    if(event.code === 'Space') {
+      this.playPause()
     }
   }
 
