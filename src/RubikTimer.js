@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import RubikCharts from './RubikCharts'
+import RubikClock from './RubikClock'
+import formatSeconds from './utils'
 
-let interval = null
 const TIMES_KEY = 'rubiks_times'
 
 class RubikTimer extends Component {
@@ -10,8 +11,6 @@ class RubikTimer extends Component {
 
     this.state = {
       isStarted: false,
-      timeStarted: null,
-      timePassed: 0,
       times: []
     }
 
@@ -29,48 +28,29 @@ class RubikTimer extends Component {
     }
   }
 
-  _updateTimer() {
-    this.setState((prevState) => {
-      return {
-        timePassed: ((performance.now() - prevState.timeStarted) / 1000).toFixed(1)
-      }
-    })
-  }
-
-  _formatSeconds(secs) {
-    const minutes = Math.floor(secs / 60)
-    const seconds = (secs - minutes * 60).toFixed(1)
-    let ret = `${seconds}s`
-    if (minutes) {
-      ret = `${minutes}m ${seconds}s`
-    }
-    return ret
-  }
-
   playPause() {
     if(!this.state.isStarted) {
       this.setState((prevState) => {
         return {
-          isStarted: true,
-          timeStarted: performance.now()
+          isStarted: true
         }
       })
-      interval = setInterval(this._updateTimer.bind(this), 100)
+      this.refs.clock.start(performance.now())
     } else {
-      clearInterval(interval);
+      let final_time = this.refs.clock.reset()
       this.setState((prevState) => {
         let times = prevState.times
-        times.unshift({passedTime: parseFloat(prevState.timePassed)})
+        times.unshift({when: new Date(), passedTime: parseFloat(final_time)})
         localStorage.setItem(TIMES_KEY, JSON.stringify(times))
-        return {isStarted: false, timePassed: 0, timeStarted: null}
-      } )
+        return {isStarted: false}
+      })
     }
   }
 
   render() {
     return (
         <div className="Rubiks-timer">
-          <div className="Rubiks-timer-text">{this._formatSeconds(this.state.timePassed)}</div>
+          <RubikClock ref="clock" />
           <button className="Rubiks-timer-button" onClick={this.playPause}>Press space to start/stop</button>
           <div className="Rubiks-timer-chart">
             <RubikCharts data={this.state.times} />
@@ -80,7 +60,7 @@ class RubikTimer extends Component {
                 var first = (i === 0) ? "first" : ""
                 return (
                   <span className={"Rubiks-timer-time " + first} key={i.toString()}>
-                    {this._formatSeconds(time.passedTime)}
+                    {formatSeconds(time.passedTime)}
                   </span>
                 )
               })
