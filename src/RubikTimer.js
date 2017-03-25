@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import RubikCharts from './RubikCharts'
 import RubikClock from './RubikClock'
-import formatSeconds from './utils'
+import RubikTimes from './RubikTimes'
 
 const TIMES_KEY = 'rubiks_times'
 
@@ -67,17 +67,7 @@ class RubikTimer extends Component {
           <div className="Rubiks-timer-chart">
             <RubikCharts data={this.state.times} />
           </div>
-          <div className="Rubiks-timer-times">
-            {this.state.times.map((time, i) => {
-                var first = (i === 0) ? "first" : ""
-                return (
-                  <span className={"Rubiks-timer-time " + first} key={i.toString()}>
-                    {formatSeconds(time.passedTime)}
-                  </span>
-                )
-              })
-            }
-          </div>
+          <RubikTimes times={this.state.times} />
         </div>
     );
   }
