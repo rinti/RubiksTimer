@@ -26,8 +26,8 @@ class RubikTimes extends Component {
     return (
       <div>
         <div className="Rubiks-timer-view-switcher">
-          <button onClick={this.changeViewToBlobs}>Blobs</button>
-          <button onClick={this.changeViewToList}>List</button>
+          <button className="Rubiks-timer-button" onClick={this.changeViewToBlobs}>Blobs</button>
+          <button className="Rubiks-timer-button" onClick={this.changeViewToList}>List</button>
         </div>
         <div className="Rubiks-timer-times">
           {this.state.view === 0 ? <RubikTimesBlobs times={this.props.times} /> : <RubikTimesList times={this.props.times} />}
