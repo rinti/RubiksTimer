@@ -1,19 +1,27 @@
+/*
+ * red 8A000E
+ * orange FE4400
+ * jello FED100
+ * greenz 00722E
+ * bloo 003272
+ */
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Rubik', sans-serif;
-  color: #ad3957;
-  background-color: #C6E5D9;
+  color: #003272;
+  background-color: #fff;
 }
 
 .App {
   max-width: 600px;
   margin: 0 auto;
-  background-color: #F4EAD5;
+  background-color: #f1f1f1;
   padding: 15px;
   min-height: 100vh;
-  border-left: 1px solid #C6A49A;
-  border-right: 1px solid #C6A49A;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
 .Rubiks-timer, .App-header {
@@ -23,8 +31,7 @@ body {
 .Rubiks-timer-text {
   padding: 15px;
   margin: 15px;
-  background-color: #E94E77;
-  border: 1px solid #ad3957;
+  background-color: #003272;
   color: #fff;
 }
 
@@ -42,8 +49,11 @@ body {
   display: inline-block;
   padding: 15px;
   margin: 15px;
-  background-color: #E94E77;
+  background-color: #00722E;
   color: #fff;
+}
+.Rubiks-timer-time.first {
+  border: 2px solid #0B3333;
 }
 
 .Rubiks-timer-button {
@@ -51,14 +61,13 @@ body {
   padding: 15px;
   font-family: 'Rubik', sans-serif;
   margin: 15px;
-  background-color: #ad3957;
-  color: #fff;
+  background-color: #FED100;
+  color: #003272;
   font-size: 14px;
+  border-bottom: 1px solid #FF9E35;
+  border-right: 1px solid #FF9E35;
 }
 
-.Rubiks-timer-time.first {
-  border: 2px solid #ad3957;
-}
 
 .App-header .App-name {
   margin-top: 10px;

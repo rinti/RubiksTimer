@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import RubikCharts from './RubikCharts'
 import RubikClock from './RubikClock'
 import RubikTimes from './RubikTimes'
+import RubikAverages from './RubikAverages'
 
 const TIMES_KEY = 'rubiks_times'
 
@@ -64,6 +65,7 @@ class RubikTimer extends Component {
         <div className="Rubiks-timer">
           <RubikClock ref="clock" />
           <button className="Rubiks-timer-button" onClick={this.playPause}>Press space to start/stop</button>
+          <RubikAverages times={this.state.times} />
           <RubikCharts data={this.state.times} />
           <RubikTimes times={this.state.times} />
         </div>
